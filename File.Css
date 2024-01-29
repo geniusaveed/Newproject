@@ -1,9 +1,12 @@
 body {
-    font-family: 'Arial', sans-serif;
+    background-image: url('https://unsplash.com/photos/a-group-of-red-berries-_aBqkfb5YJc.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
-    background-color: #f7e6e6;
-    overflow-x: hidden; /* Prevent horizontal scrollbar */
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
 }
 
 .container {
