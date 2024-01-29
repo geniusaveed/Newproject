@@ -6,43 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            background-image: url('https://raw.githubusercontent.com/geniusaveed/Newproject/main/IMG_2779.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            overflow-x: hidden; /* Prevent horizontal scrollbar */
-        }
-
-        .container {
-            text-align: center;
-            padding: 50px;
-            background-color: rgba(255, 255, 255, 0.8); /* Light background to enhance readability */
-            margin: auto;
-            width: 80%;
-            margin-top: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
-        .message {
-            text-align: center;
-            margin-top: 20px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Light background to enhance readability */
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+        /* Your existing CSS styles */
     </style>
     <title>Valentine's Day Proposal</title>
 </head>
@@ -53,6 +17,9 @@
         <p class="animate__animated animate__fadeIn">On this special day, I want to express my love for you.</p>
         <img src="your_image_url.jpg" alt="Couple Image" class="animate__animated animate__zoomIn">
         <p class="animate__animated animate__fadeIn">Scroll down for a special message...</p>
+        
+        <!-- Add the button here -->
+        <button id="celebrateButton" onclick="celebrate()">Yes, I will be your Valentine!</button>
     </div>
 
     <div class="message animate__animated animate__slideInUp">
@@ -61,6 +28,14 @@
         <p>With all my love,</p>
         <p>Your Name</p>
     </div>
+
+    <!-- Add the celebration function here -->
+    <script>
+        function celebrate() {
+            alert("Yay! 🎉 Thank you for being my Valentine!");
+            // You can add your special celebration animation here
+        }
+    </script>
 
 </body>
 </html>
