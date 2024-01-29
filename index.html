@@ -64,12 +64,6 @@
             margin: 5px;
         }
 
-        video {
-            width: 100%;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
         @keyframes floatUp {
             to {
                 transform: translateY(-100vh);
@@ -91,11 +85,11 @@
         <button class="button" onclick="celebrate()">Yes, I will be your Valentine!</button>
         <button class="button" onclick="reject()">No, I will not be your Valentine</button>
 
-        <!-- Add the video here -->
-        <video controls>
-            <source src="https://raw.githubusercontent.com/geniusaveed/Newproject/main/Cartoon.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- Add the two pictures here -->
+        <div class="image-container">
+            <img src="https://example.com/your-first-image.jpg" alt="First Image" class="animate__animated animate__fadeInLeft">
+            <img src="https://example.com/your-second-image.jpg" alt="Second Image" class="animate__animated animate__fadeInRight">
+        </div>
     </div>
 
     <!-- Add the celebration and rejection functions here -->
