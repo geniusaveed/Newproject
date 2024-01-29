@@ -8,6 +8,20 @@ body {
     font-family: 'Arial', sans-serif;
     overflow-x: hidden;
 }
+#celebrateButton {
+    background-color: #ff4d4d;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#celebrateButton:hover {
+    background-color: #e60000;
+}
 
 .container {
     text-align: center;
