@@ -1,8 +1,9 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f7e6e6;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
 .container {
