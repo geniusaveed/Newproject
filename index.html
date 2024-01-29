@@ -78,18 +78,37 @@
     <!-- Add the celebration function here -->
     <script>
         function celebrate() {
+            // Run balloon animation for 1 minute
+            const startTime = new Date().getTime();
+            const duration = 60 * 1000; // 1 minute in milliseconds
+            
+            const intervalId = setInterval(() => {
+                if (new Date().getTime() - startTime > duration) {
+                    clearInterval(intervalId); // Stop the animation after 1 minute
+                    document.querySelector('.container').style.display = 'none';
+                    document.querySelector('.message').style.display = 'block';
+                } else {
+                    createBalloon();
+                }
+            }, 1000); // Add balloons every second
+        }
+
+        function createBalloon() {
             // Create a balloon element
             const balloon = document.createElement('div');
             balloon.classList.add('balloon');
-            
+
+            // Set random position for the balloon
+            const randomX = Math.random() * window.innerWidth;
+            balloon.style.left = `${randomX}px`;
+
             // Append the balloon to the body
             document.body.appendChild(balloon);
 
-            // Hide the container and show the message after the animation completes
-            setTimeout(() => {
-                document.querySelector('.container').style.display = 'none';
-                document.querySelector('.message').style.display = 'block';
-            }, 1000); // Adjust the time according to the balloon animation duration
+            // Remove the balloon after the animation completes
+            balloon.addEventListener('animationend', () => {
+                balloon.remove();
+            });
         }
     </script>
 
