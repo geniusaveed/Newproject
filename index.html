@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="file.css">
     <style>
         body {
@@ -45,11 +46,9 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .balloon {
-            width: 50px;
-            height: 70px;
-            background-color: #ff69b4; /* You can customize the balloon color */
-            border-radius: 50%;
+        .heart {
+            font-size: 50px;
+            color: #ff69b4; /* You can customize the heart color */
             position: absolute;
             animation: floatUp 1s ease-in-out forwards;
         }
@@ -82,47 +81,47 @@
             document.querySelector('.container').style.display = 'none';
             document.querySelector('.message').style.display = 'block';
 
-            // Run balloon animation for 1 minute
+            // Run heart animation for 1 minute
             const startTime = new Date().getTime();
             const duration = 60 * 1000; // 1 minute in milliseconds
-            const balloonCount = 4;
+            const heartCount = 4;
 
             const intervalId = setInterval(() => {
                 if (new Date().getTime() - startTime > duration) {
                     clearInterval(intervalId); // Stop the animation after 1 minute
                 } else {
-                    createBalloons(balloonCount);
+                    createHearts(heartCount);
                 }
-            }, 1000); // Add balloons every second
+            }, 1000); // Add hearts every second
         }
 
-        function createBalloons(count) {
+        function createHearts(count) {
             for (let i = 0; i < count; i++) {
                 setTimeout(() => {
-                    createBalloon();
-                }, i * 250); // Adjust the delay (250 milliseconds) for each balloon
+                    createHeart();
+                }, i * 250); // Adjust the delay (250 milliseconds) for each heart
             }
         }
 
-        function createBalloon() {
-            // Create a balloon element
-            const balloon = document.createElement('div');
-            balloon.classList.add('balloon');
+        function createHeart() {
+            // Create a heart element using Font Awesome icon
+            const heart = document.createElement('i');
+            heart.classList.add('fas', 'fa-heart', 'heart');
 
-            // Set random position for the balloon
-            const randomX = Math.random() * (window.innerWidth - 50); // Adjusted for balloon width
-            balloon.style.left = `${randomX}px`;
+            // Set random position for the heart
+            const randomX = Math.random() * (window.innerWidth - 50); // Adjusted for heart size
+            heart.style.left = `${randomX}px`;
 
-            // Append the balloon to the body
-            document.body.appendChild(balloon);
+            // Append the heart to the body
+            document.body.appendChild(heart);
 
-            // Remove the balloon after the animation completes
-            balloon.addEventListener('animationend', () => {
-                balloon.remove();
+            // Remove the heart after the animation completes
+            heart.addEventListener('animationend', () => {
+                heart.remove();
 
-                // Check if all balloons have popped and display the message
-                const balloons = document.querySelectorAll('.balloon');
-                if (balloons.length === 0) {
+                // Check if all hearts have popped and display the message
+                const hearts = document.querySelectorAll('.heart');
+                if (hearts.length === 0) {
                     document.querySelector('.container').style.display = 'none';
                     document.querySelector('.message').style.display = 'block';
                 }
