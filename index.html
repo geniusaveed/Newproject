@@ -85,19 +85,22 @@
             // Run balloon animation for 1 minute
             const startTime = new Date().getTime();
             const duration = 60 * 1000; // 1 minute in milliseconds
-            
+            const balloonCount = 4;
+
             const intervalId = setInterval(() => {
                 if (new Date().getTime() - startTime > duration) {
                     clearInterval(intervalId); // Stop the animation after 1 minute
                 } else {
-                    createBalloons(4); // Adjust the number of balloons as needed
+                    createBalloons(balloonCount);
                 }
             }, 1000); // Add balloons every second
         }
 
         function createBalloons(count) {
             for (let i = 0; i < count; i++) {
-                createBalloon();
+                setTimeout(() => {
+                    createBalloon();
+                }, i * 250); // Adjust the delay (250 milliseconds) for each balloon
             }
         }
 
@@ -107,7 +110,7 @@
             balloon.classList.add('balloon');
 
             // Set random position for the balloon
-            const randomX = Math.random() * window.innerWidth;
+            const randomX = Math.random() * (window.innerWidth - 50); // Adjusted for balloon width
             balloon.style.left = `${randomX}px`;
 
             // Append the balloon to the body
