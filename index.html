@@ -36,6 +36,7 @@
         }
 
         .message {
+            display: none; /* Initially hide the message */
             text-align: center;
             margin-top: 20px;
             padding: 20px;
@@ -74,13 +75,6 @@
         <button id="celebrateButton" onclick="celebrate()">Yes, I will be your Valentine!</button>
     </div>
 
-    <div class="message animate__animated animate__slideInUp">
-        <p>My love,</p>
-        <p>Life with you is a beautiful journey. You make every moment special. Will you make this Valentine's Day the most memorable one by being my Valentine forever?</p>
-        <p>With all my love,</p>
-        <p>Your Name</p>
-    </div>
-
     <!-- Add the celebration function here -->
     <script>
         function celebrate() {
@@ -91,12 +85,20 @@
             // Append the balloon to the body
             document.body.appendChild(balloon);
 
-            // Remove the balloon after the animation completes
-            balloon.addEventListener('animationend', () => {
-                balloon.remove();
-            });
+            // Hide the container and show the message after the animation completes
+            setTimeout(() => {
+                document.querySelector('.container').style.display = 'none';
+                document.querySelector('.message').style.display = 'block';
+            }, 1000); // Adjust the time according to the balloon animation duration
         }
     </script>
+
+    <div class="message animate__animated animate__slideInUp">
+        <p>My love,</p>
+        <p>Life with you is a beautiful journey. You make every moment special. Will you make this Valentine's Day the most memorable one by being my Valentine forever?</p>
+        <p>With all my love,</p>
+        <p>Your Name</p>
+    </div>
 
 </body>
 </html>
