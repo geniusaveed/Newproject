@@ -78,6 +78,10 @@
     <!-- Add the celebration function here -->
     <script>
         function celebrate() {
+            // Display the message immediately
+            document.querySelector('.container').style.display = 'none';
+            document.querySelector('.message').style.display = 'block';
+
             // Run balloon animation for 1 minute
             const startTime = new Date().getTime();
             const duration = 60 * 1000; // 1 minute in milliseconds
@@ -85,8 +89,6 @@
             const intervalId = setInterval(() => {
                 if (new Date().getTime() - startTime > duration) {
                     clearInterval(intervalId); // Stop the animation after 1 minute
-                    document.querySelector('.container').style.display = 'none';
-                    document.querySelector('.message').style.display = 'block';
                 } else {
                     createBalloon();
                 }
@@ -108,13 +110,6 @@
             // Remove the balloon after the animation completes
             balloon.addEventListener('animationend', () => {
                 balloon.remove();
-
-                // Check if all balloons have popped and display the message
-                const balloons = document.querySelectorAll('.balloon');
-                if (balloons.length === 0) {
-                    document.querySelector('.container').style.display = 'none';
-                    document.querySelector('.message').style.display = 'block';
-                }
             });
         }
     </script>
