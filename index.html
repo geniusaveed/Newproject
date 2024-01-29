@@ -108,6 +108,13 @@
             // Remove the balloon after the animation completes
             balloon.addEventListener('animationend', () => {
                 balloon.remove();
+
+                // Check if all balloons have popped and display the message
+                const balloons = document.querySelectorAll('.balloon');
+                if (balloons.length === 0) {
+                    document.querySelector('.container').style.display = 'none';
+                    document.querySelector('.message').style.display = 'block';
+                }
             });
         }
     </script>
