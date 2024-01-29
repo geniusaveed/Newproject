@@ -43,6 +43,22 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+        .balloon {
+            width: 50px;
+            height: 70px;
+            background-color: #ff69b4; /* You can customize the balloon color */
+            border-radius: 50%;
+            position: absolute;
+            animation: floatUp 1s ease-in-out forwards;
+        }
+
+        @keyframes floatUp {
+            to {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
     </style>
     <title>Valentine's Day Proposal</title>
 </head>
@@ -68,8 +84,17 @@
     <!-- Add the celebration function here -->
     <script>
         function celebrate() {
-            alert("Yay! 🎉 Thank you for being my Valentine!");
-            // You can add your special celebration animation here
+            // Create a balloon element
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            
+            // Append the balloon to the body
+            document.body.appendChild(balloon);
+
+            // Remove the balloon after the animation completes
+            balloon.addEventListener('animationend', () => {
+                balloon.remove();
+            });
         }
     </script>
 
