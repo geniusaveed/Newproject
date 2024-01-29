@@ -64,6 +64,10 @@
             margin: 5px;
         }
 
+        .image-container {
+            display: none; /* Initially hide the image container */
+        }
+
         @keyframes floatUp {
             to {
                 transform: translateY(-100vh);
@@ -85,7 +89,7 @@
         <button class="button" onclick="celebrate()">Yes, I will be your Valentine!</button>
         <button class="button" onclick="reject()">No, I will not be your Valentine</button>
 
-        <!-- Add the two pictures here -->
+        <!-- Add the image container here -->
         <div class="image-container">
             <img src="https://example.com/your-first-image.jpg" alt="First Image" class="animate__animated animate__fadeInLeft">
             <img src="https://example.com/your-second-image.jpg" alt="Second Image" class="animate__animated animate__fadeInRight">
@@ -98,6 +102,7 @@
             // Display the message immediately
             document.querySelector('.container').style.display = 'none';
             document.querySelector('.message').style.display = 'block';
+            document.querySelector('.image-container').style.display = 'block'; // Show the image container
 
             // Run heart animation for 1 minute
             const startTime = new Date().getTime();
