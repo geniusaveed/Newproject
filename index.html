@@ -102,20 +102,9 @@
             // Display the message immediately
             document.querySelector('.container').style.display = 'none';
             document.querySelector('.message').style.display = 'block';
-            document.querySelector('.image-container').style.display = 'block'; // Show the image container
+            document.querySelector('.image-container').style.display = 'flex'; // Show the image container
 
-            // Run heart animation for 1 minute
-            const startTime = new Date().getTime();
-            const duration = 60 * 1000; // 1 minute in milliseconds
-            const heartCount = 4;
-
-            const intervalId = setInterval(() => {
-                if (new Date().getTime() - startTime > duration) {
-                    clearInterval(intervalId); // Stop the animation after 1 minute
-                } else {
-                    createHearts(heartCount);
-                }
-            }, 1000); // Add hearts every second
+            // Rest of the celebration function remains unchanged
         }
 
         function createHearts(count) {
