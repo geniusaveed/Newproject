@@ -53,6 +53,16 @@
             animation: floatUp 2s ease-in-out forwards; /* Adjusted duration and easing */
         }
 
+        .noButton {
+            background-color: #ff6961; /* Light red color for the "No" button */
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
         @keyframes floatUp {
             to {
                 transform: translateY(-100vh);
@@ -70,11 +80,12 @@
         <img src="https://raw.githubusercontent.com/geniusaveed/Newproject/main/IMG_2780.jpeg" alt="Couple Image" class="animate__animated animate__zoomIn">
         <p class="animate__animated animate__fadeIn">I LOVE YOU NAVEERA ❤️❤️</p>
         
-        <!-- Add the button here -->
+        <!-- Add the buttons here -->
         <button id="celebrateButton" onclick="celebrate()">Yes, I will be your Valentine!</button>
+        <button class="noButton" onclick="reject()">No, I will not be your Valentine</button>
     </div>
 
-    <!-- Add the celebration function here -->
+    <!-- Add the celebration and rejection functions here -->
     <script>
         function celebrate() {
             // Display the message immediately
@@ -127,8 +138,23 @@
                 }
             });
         }
+
+        function reject() {
+            // Hide the proposal container
+            document.querySelector('.container').style.display = 'none';
+
+            // Display rejection message
+            const rejectionMessage = document.createElement('div');
+            rejectionMessage.classList.add('message');
+            rejectionMessage.innerHTML = `
+                <h1>Sorry to hear that...</h1>
+                <p>It's okay if you don't want to be my Valentine. Wishing you a great day!</p>
+            `;
+            document.body.appendChild(rejectionMessage);
+        }
     </script>
 
+    <!-- Add the celebration and rejection functions here -->
     <div class="message animate__animated animate__slideInUp">
         <p>My love,</p>
         <p>Life with you is a beautiful journey. You make every moment special. Will you make this Valentine's Day the most memorable one by being my Valentine forever?</p>
