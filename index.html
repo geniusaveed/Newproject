@@ -95,61 +95,61 @@
             <img src="https://raw.githubusercontent.com/geniusaveed/Newproject/main/IMG_2780.jpeg" alt="Second Image" class="animate__animated animate__fadeInRight">
         </div>
     </div>
+<!-- Add the celebration and rejection functions here -->
+<script>
+    function celebrate() {
+        // Display the message and images immediately
+        document.querySelector('.container').style.display = 'none';
+        document.querySelector('.message').style.display = 'block';
+        document.querySelector('.image-container').style.display = 'flex'; // Show the image container
+        createHearts(4); // Adjusted to create 4 hearts
 
-    <!-- Add the celebration and rejection functions here -->
-    <script>
-        function celebrate() {
-            // Display the message immediately
-            document.querySelector('.container').style.display = 'none';
-            document.querySelector('.message').style.display = 'block';
-            document.querySelector('.image-container').style.display = 'flex'; // Show the image container
+        // Rest of the celebration function remains unchanged
+    }
 
-            // Rest of the celebration function remains unchanged
+    function createHearts(count) {
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                createHeart();
+            }, i * 250); // Adjust the delay (250 milliseconds) for each heart
         }
+    }
 
-        function createHearts(count) {
-            for (let i = 0; i < count; i++) {
-                setTimeout(() => {
-                    createHeart();
-                }, i * 250); // Adjust the delay (250 milliseconds) for each heart
+    function createHeart() {
+        // Create a heart element using Font Awesome icon
+        const heart = document.createElement('i');
+        heart.classList.add('fas', 'fa-heart', 'heart');
+
+        // Set random position for the heart
+        const randomX = Math.random() * (window.innerWidth - 50); // Adjusted for heart size
+        heart.style.left = `${randomX}px`;
+
+        // Append the heart to the body
+        document.body.appendChild(heart);
+
+        // Remove the heart after the animation completes
+        heart.addEventListener('animationend', () => {
+            heart.remove();
+
+            // Check if all hearts have popped and display the message
+            const hearts = document.querySelectorAll('.heart');
+            if (hearts.length === 0) {
+                document.querySelector('.container').style.display = 'none';
+                document.querySelector('.message').style.display = 'block';
             }
-        }
+        });
+    }
 
-        function createHeart() {
-            // Create a heart element using Font Awesome icon
-            const heart = document.createElement('i');
-            heart.classList.add('fas', 'fa-heart', 'heart');
-
-            // Set random position for the heart
-            const randomX = Math.random() * (window.innerWidth - 50); // Adjusted for heart size
-            heart.style.left = `${randomX}px`;
-
-            // Append the heart to the body
-            document.body.appendChild(heart);
-
-            // Remove the heart after the animation completes
-            heart.addEventListener('animationend', () => {
-                heart.remove();
-
-                // Check if all hearts have popped and display the message
-                const hearts = document.querySelectorAll('.heart');
-                if (hearts.length === 0) {
-                    document.querySelector('.container').style.display = 'none';
-                    document.querySelector('.message').style.display = 'block';
-                }
-            });
-        }
-
-        function reject() {
-            // Display rejection message immediately
-            document.querySelector('.container').style.display = 'none';
-            document.querySelector('.message').style.display = 'block';
-            document.querySelector('.message').innerHTML = `
-                <h1>Sorry to hear that...</h1>
-                <p>You are a special person, and I appreciate your honesty. Wishing you all the best!</p>
-            `;
-        }
-    </script>
+    function reject() {
+        // Display rejection message immediately
+        document.querySelector('.container').style.display = 'none';
+        document.querySelector('.message').style.display = 'block';
+        document.querySelector('.message').innerHTML = `
+            <h1>Sorry to hear that...</h1>
+            <p>You are a special person, and I appreciate your honesty. Wishing you all the best!</p>
+        `;
+    }
+</script>
 
     <div class="message animate__animated animate__slideInUp">
         <p>My love,</p>
