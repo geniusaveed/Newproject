@@ -7,76 +7,70 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="file.css">
     <style>
-    body {
-        background-image: url('https://raw.githubusercontent.com/geniusaveed/Newproject/main/IMG_2779.jpeg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        margin: 0;
-        padding: 0;
-        font-family: 'Arial', sans-serif;
-        overflow-x: hidden;
-    }
-
-    .container {
-        text-align: center;
-        padding: 50px;
-        background-color: rgba(255, 255, 255, 0.8);
-        margin: auto;
-        width: 80%;
-        margin-top: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-top: 20px;
-    }
-
-    .message {
-        display: none; /* Initially hide the message */
-        text-align: center;
-        margin-top: 20px;
-        padding: 20px;
-        background-color: rgba(255, 255, 255, 0.8);
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .heart {
-        font-size: 50px;
-        color: red; /* Set the heart color to red */
-        position: absolute;
-        animation: floatUp 2s ease-in-out forwards; /* Adjusted duration and easing */
-    }
-
-    .button {
-        background-color: #ff6961; /* Light red color for the buttons */
-        color: white;
-        padding: 10px 20px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin: 5px;
-    }
-
-    .image-container {
-        display: none; /* Initially hide the image container */
-        justify-content: space-around; /* Adjusted spacing */
-        margin-top: 20px;
-    }
-
-    @keyframes floatUp {
-        to {
-            transform: translateY(-100vh);
-            opacity: 0;
+        body {
+            background-image: url('https://raw.githubusercontent.com/geniusaveed/Newproject/main/IMG_2779.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
         }
-    }
-</style>
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: auto;
+            width: 80%;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .message {
+            display: none; /* Initially hide the message */
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .heart {
+            font-size: 50px;
+            color: red; /* Set the heart color to red */
+            position: absolute;
+            animation: floatUp 2s ease-in-out forwards; /* Adjusted duration and easing */
+        }
+
+        .button {
+            background-color: #ff6961; /* Light red color for the buttons */
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        @keyframes floatUp {
+            to {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
     <title>Valentine's Day Proposal</title>
 </head>
 <body>
@@ -98,18 +92,34 @@
         </div>
     </div>
 
- <!-- Add the celebration and rejection functions here -->
-<script>
-    function celebrate() {
-        // Display the message and images immediately
-        document.querySelector('.container').style.display = 'none';
-        document.querySelector('.message').style.display = 'block';
-        document.querySelector('.image-container').style.display = 'flex'; // Show the image container
+    <!-- Add the celebration and rejection functions here -->
+    <script>
+        function celebrate() {
+            // Display the message immediately
+            document.querySelector('.container').style.display = 'none';
+            document.querySelector('.message').style.display = 'block';
 
-        // Run heart animation for 1 minute
-        const startTime = new Date().getTime();
-        const duration = 60 * 1000; // 1 minute in milliseconds
-        const heartCount = 4;
+            // Run heart animation for 1 minute
+            const startTime = new Date().getTime();
+            const duration = 60 * 1000; // 1 minute in milliseconds
+            const heartCount = 4;
+
+            const intervalId = setInterval(() => {
+                if (new Date().getTime() - startTime > duration) {
+                    clearInterval(intervalId); // Stop the animation after 1 minute
+                } else {
+                    createHearts(heartCount);
+                }
+            }, 1000); // Add hearts every second
+        }
+
+        function createHearts(count) {
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    createHeart();
+                }, i * 250); // Adjust the delay (250 milliseconds) for each heart
+            }
+        }
 
         function createHeart() {
             // Create a heart element using Font Awesome icon
@@ -120,8 +130,8 @@
             const randomX = Math.random() * (window.innerWidth - 50); // Adjusted for heart size
             heart.style.left = `${randomX}px`;
 
-            // Append the heart to the container
-            document.querySelector('.image-container').appendChild(heart);
+            // Append the heart to the body
+            document.body.appendChild(heart);
 
             // Remove the heart after the animation completes
             heart.addEventListener('animationend', () => {
@@ -136,25 +146,16 @@
             });
         }
 
-        const intervalId = setInterval(() => {
-            if (new Date().getTime() - startTime > duration) {
-                clearInterval(intervalId); // Stop the animation after 1 minute
-            } else {
-                createHeart();
-            }
-        }, 1000); // Add hearts every second
-    }
-
-    function reject() {
-        // Display rejection message immediately
-        document.querySelector('.container').style.display = 'none';
-        document.querySelector('.message').style.display = 'block';
-        document.querySelector('.message').innerHTML = `
-            <h1>Sorry to hear that...</h1>
-            <p>You are a special person, and I appreciate your honesty. Wishing you all the best!</p>
-        `;
-    }
-</script>
+        function reject() {
+            // Display rejection message immediately
+            document.querySelector('.container').style.display = 'none';
+            document.querySelector('.message').style.display = 'block';
+            document.querySelector('.message').innerHTML = `
+                <h1>Sorry to hear that...</h1>
+                <p>You are a special person, and I appreciate your honesty. Wishing you all the best!</p>
+            `;
+        }
+    </script>
 
     <div class="message animate__animated animate__slideInUp">
         <p>My love,</p>
