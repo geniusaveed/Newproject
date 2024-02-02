@@ -98,50 +98,51 @@
         </div>
     </div>
 
-    <!-- Add the celebration and rejection functions here -->
+ <!-- Add the celebration and rejection functions here -->
 <script>
     function celebrate() {
         // Display the message and images immediately
         document.querySelector('.container').style.display = 'none';
         document.querySelector('.message').style.display = 'block';
         document.querySelector('.image-container').style.display = 'flex'; // Show the image container
-        createHearts(4); // Adjusted to create 4 hearts
 
-        // Rest of the celebration function remains unchanged
-    }
+        // Run heart animation for 1 minute
+        const startTime = new Date().getTime();
+        const duration = 60 * 1000; // 1 minute in milliseconds
+        const heartCount = 4;
 
-    function createHearts(count) {
-        const container = document.querySelector('.image-container');
-        for (let i = 0; i < count; i++) {
-            setTimeout(() => {
-                createHeart(container);
-            }, i * 250); // Adjust the delay (250 milliseconds) for each heart
+        function createHeart() {
+            // Create a heart element using Font Awesome icon
+            const heart = document.createElement('i');
+            heart.classList.add('fas', 'fa-heart', 'heart');
+
+            // Set random position for the heart
+            const randomX = Math.random() * (window.innerWidth - 50); // Adjusted for heart size
+            heart.style.left = `${randomX}px`;
+
+            // Append the heart to the container
+            document.querySelector('.image-container').appendChild(heart);
+
+            // Remove the heart after the animation completes
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+
+                // Check if all hearts have popped and display the message
+                const hearts = document.querySelectorAll('.heart');
+                if (hearts.length === 0) {
+                    document.querySelector('.container').style.display = 'none';
+                    document.querySelector('.message').style.display = 'block';
+                }
+            });
         }
-    }
 
-    function createHeart(container) {
-        // Create a heart element using Font Awesome icon
-        const heart = document.createElement('i');
-        heart.classList.add('fas', 'fa-heart', 'heart');
-
-        // Set random position for the heart
-        const randomX = Math.random() * (window.innerWidth - 50); // Adjusted for heart size
-        heart.style.left = `${randomX}px`;
-
-        // Append the heart to the container
-        container.appendChild(heart);
-
-        // Remove the heart after the animation completes
-        heart.addEventListener('animationend', () => {
-            heart.remove();
-
-            // Check if all hearts have popped and display the message
-            const hearts = container.querySelectorAll('.heart');
-            if (hearts.length === 0) {
-                document.querySelector('.container').style.display = 'none';
-                document.querySelector('.message').style.display = 'block';
+        const intervalId = setInterval(() => {
+            if (new Date().getTime() - startTime > duration) {
+                clearInterval(intervalId); // Stop the animation after 1 minute
+            } else {
+                createHeart();
             }
-        });
+        }, 1000); // Add hearts every second
     }
 
     function reject() {
