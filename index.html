@@ -96,23 +96,42 @@
 
     <!-- Add the celebration and rejection functions here -->
     <script>
-        function celebrate() {
-            // Display the message immediately
-            document.querySelector('.container').style.display = 'none';
-            document.querySelector('.message').style.display = 'block';
+        <!-- Add the celebration and rejection functions here -->
 
-            // Run heart animation for 1 minute
-            const startTime = new Date().getTime();
-            const duration = 60 * 1000; // 1 minute in milliseconds
-            const heartCount = 4;
+    let imageIndex = 0;
+    const imageUrls = [
+        'https://raw.githubusercontent.com/geniusaveed/Newproject/main/d2f0971d-078d-4062-baa9-b073e3d3d88a.jpeg',
+        'https://example.com/your-second-image.jpg',  // Add more image URLs as needed
+        'https://example.com/your-third-image.jpg'
+    ];
 
-            const intervalId = setInterval(() => {
-                if (new Date().getTime() - startTime > duration) {
-                    clearInterval(intervalId); // Stop the animation after 1 minute
-                } else {
-                    createHearts(heartCount);
-                }
-            }, 1000); // Add hearts every second
+    function celebrate() {
+        // Display the message immediately
+        document.querySelector('.container').style.display = 'none';
+        document.querySelector('.message').style.display = 'block';
+
+        // Set interval to change image every 3 seconds
+        setInterval(() => {
+            imageIndex = (imageIndex + 1) % imageUrls.length;
+            const imageUrl = imageUrls[imageIndex];
+            document.querySelector('.celebration-image').src = imageUrl;
+        }, 3000);
+        
+        // Run heart animation for 1 minute
+        const startTime = new Date().getTime();
+        const duration = 60 * 1000; // 1 minute in milliseconds
+        const heartCount = 4;
+
+        const intervalId = setInterval(() => {
+            if (new Date().getTime() - startTime > duration) {
+                clearInterval(intervalId); // Stop the animation after 1 minute
+            } else {
+                createHearts(heartCount);
+            }
+        }, 1000); // Add hearts every second
+    }
+
+    // ... rest of your code
         }
 
         function createHearts(count) {
